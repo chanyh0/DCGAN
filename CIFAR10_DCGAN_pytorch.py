@@ -11,8 +11,8 @@ import imageio
 # Parameters
 image_size = 64
 G_input_dim = 100
-G_output_dim = 1
-D_input_dim = 1
+G_output_dim = 3
+D_input_dim = 3
 D_output_dim = 1
 num_filters = [1024, 512, 256, 128]
 
@@ -118,7 +118,7 @@ class Discriminator(torch.nn.Module):
 
             # Activation
             act_name = 'act' + str(i + 1)
-            self.hidden_layer.add_module(act_name, torch.nn.LeakyReLU(0.2))
+            self.hidden_layer.add_module(act_name, torch.nn.ReLU())
 
         # Output layer
         self.output_layer = torch.nn.Sequential()
