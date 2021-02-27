@@ -7,7 +7,7 @@ import imageio
 from utils.inception_score import get_inception_score
 from utils.fid_score import calculate_fid_given_paths
 
-def validate(fid_stat, gen_net: nn.Module):
+def validate(fid_stat, gen_net: nn.Module, G_input_dim):
     # eval mode
     gen_net = gen_net.eval()
 
