@@ -176,7 +176,7 @@ def plot_result(generator, noise, num_epoch, save=False, save_dir='CIFAR10_DCGAN
     for ax, img in zip(axes.flatten(), gen_image):
         ax.axis('off')
         #ax.set_adjustable('box-forced')
-        ax.imshow(img.cpu().data.view(image_size, image_size).numpy(), cmap='gray', aspect='equal')
+        ax.imshow(img.cpu().data.view(image_size, image_size, G_output_dim).numpy())
     plt.subplots_adjust(wspace=0, hspace=0)
     title = 'Epoch {0}'.format(num_epoch+1)
     fig.text(0.5, 0.04, title, ha='center')
