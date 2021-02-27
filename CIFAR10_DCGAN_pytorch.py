@@ -291,7 +291,7 @@ for epoch in range(num_epochs):
 
     if epoch % 5 == 0:
         fid_stat = 'fid_stat/fid_stats_cifar10_train.npz'
-        inception_score, fid_score = validate(fid_stat, G)
+        inception_score, fid_score = validate(fid_stat, G, G_input_dim)
         print("Epoch: {}, FID: {}, IS: {}".format(epoch, fid_score, inception_score))
 # Make gif
 loss_plots = []
