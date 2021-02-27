@@ -20,6 +20,7 @@ def validate(fid_stat, gen_net: nn.Module):
     img_list = list()
     for iter_idx in range(eval_iter):
         z = torch.cuda.FloatTensor(np.random.normal(0, 1, (25, 100)))
+        z = z.view(-1, G_input_dim, 1, 1)
 
         # Generate a batch of images
         gen_imgs = gen_net(z).mul_(127.5).add_(127.5).clamp_(0.0, 255.0).permute(0, 2, 3, 1).to('cpu', torch.uint8).numpy()
