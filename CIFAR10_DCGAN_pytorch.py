@@ -10,6 +10,9 @@ import imageio
 
 from validate import validate
 
+from utils.inception_score import _init_inception
+from utils.fid_score import create_inception_graph, check_or_download_inception
+
 # Parameters
 image_size = 64
 G_input_dim = 100
@@ -197,6 +200,12 @@ def plot_result(generator, noise, num_epoch, save=False, save_dir='CIFAR10_DCGAN
 
 
 # Models
+
+_init_inception()
+inception_path = check_or_download_inception(None)
+create_inception_graph(inception_path)
+
+
 G = Generator(G_input_dim, num_filters, G_output_dim)
 D = Discriminator(D_input_dim, num_filters[::-1], D_output_dim)
 G.cuda()
