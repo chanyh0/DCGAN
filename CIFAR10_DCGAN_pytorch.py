@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import os
 import imageio
 
+from validate import validate
+
 # Parameters
 image_size = 64
 G_input_dim = 100
@@ -287,6 +289,10 @@ for epoch in range(num_epochs):
     # Show result for fixed noise
     plot_result(G, fixed_noise, epoch, save=True, fig_size=(5, 5))
 
+    if epoch % 5 == 0:
+        fid_stat = 'fid_stat/fid_stats_cifar10_train.npz'
+        inception_score, fid_score = validate(fid_stat, G)
+        print("Epoch: {}, FID: {}, IS: {}".format(epoch, fid_score, inception_score))
 # Make gif
 loss_plots = []
 gen_image_plots = []
