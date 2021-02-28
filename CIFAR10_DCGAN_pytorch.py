@@ -314,7 +314,7 @@ for epoch in range(num_epochs):
     gen_image_plots.append(imageio.imread(save_fn2))
 
 
-if not os.exists(save_dir):
+if not os.path.exists(save_dir):
     os.makedirs(save_dir)
     
 imageio.mimsave(save_dir + 'CIFAR10_DCGAN_losses_epochs_{:d}'.format(num_epochs) + '.gif', loss_plots, fps=5)
