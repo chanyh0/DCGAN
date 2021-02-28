@@ -24,7 +24,7 @@ num_filters = [1024, 512, 256, 128]
 learning_rate = 0.0002
 betas = (0.5, 0.999)
 batch_size = 128
-num_epochs = 20
+num_epochs = 100
 data_dir = '../Data/CIFAR10_data/'
 save_dir = 'CIFAR10_DCGAN_results/'
 
@@ -307,15 +307,15 @@ loss_plots = []
 gen_image_plots = []
 for epoch in range(num_epochs):
     # plot for generating gif
-    save_fn1 = save_dir + 'CIFAR_DCGAN_losses_epoch_{:d}'.format(epoch + 1) + '.png'
+    save_fn1 = save_dir + 'CIFAR10_DCGAN_losses_epoch_{:d}'.format(epoch + 1) + '.png'
     loss_plots.append(imageio.imread(save_fn1))
 
-    save_fn2 = save_dir + 'CIFAR_DCGAN_epoch_{:d}'.format(epoch + 1) + '.png'
+    save_fn2 = save_dir + 'CIFAR10_DCGAN_epoch_{:d}'.format(epoch + 1) + '.png'
     gen_image_plots.append(imageio.imread(save_fn2))
 
 
 if not os.exists(save_dir):
     os.makedirs(save_dir)
     
-imageio.mimsave(save_dir + 'CIFAR_DCGAN_losses_epochs_{:d}'.format(num_epochs) + '.gif', loss_plots, fps=5)
-imageio.mimsave(save_dir + 'CIFAR_DCGAN_epochs_{:d}'.format(num_epochs) + '.gif', gen_image_plots, fps=5)
+imageio.mimsave(save_dir + 'CIFAR10_DCGAN_losses_epochs_{:d}'.format(num_epochs) + '.gif', loss_plots, fps=5)
+imageio.mimsave(save_dir + 'CIFAR10_DCGAN_epochs_{:d}'.format(num_epochs) + '.gif', gen_image_plots, fps=5)
