@@ -15,7 +15,7 @@ from utils.fid_score import create_inception_graph, check_or_download_inception
 
 # Parameters
 image_size = 64
-G_input_dim = 100
+G_input_dim = 128
 G_output_dim = 3
 D_input_dim = 3
 D_output_dim = 1
@@ -123,7 +123,7 @@ class Discriminator(torch.nn.Module):
 
             # Activation
             act_name = 'act' + str(i + 1)
-            self.hidden_layer.add_module(act_name, torch.nn.ReLU())
+            self.hidden_layer.add_module(act_name, torch.nn.LeakyReLU(0.2))
 
         # Output layer
         self.output_layer = torch.nn.Sequential()
